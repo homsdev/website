@@ -1,0 +1,265 @@
+$primary: #080708;
+$secondary: #3b60e4;
+$focus: #700204ff;
+$background: #f7fefcff;
+$highlight: #7765e3;
+
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;900&display=swap");
+
+@mixin tablet {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+body {
+  background-color: $background;
+}
+
+main {
+  margin-top: 48px;
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  .toggle {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $secondary;
+    border-radius: 0.5em;
+    cursor: pointer;
+    margin: {
+      top: 3px;
+      right: 3px;
+    }
+    .bar {
+      position: relative;
+      width: 95%;
+      height: 5px;
+      background-color: $primary;
+      border-radius: 3px;
+
+      &::before,
+      &::after {
+        content: "";
+        width: 100%;
+        height: inherit;
+        position: absolute;
+        background-color: inherit;
+        border-radius: 3px;
+      }
+
+      &::before {
+        transform: translateY(-10px);
+      }
+
+      &::after {
+        transform: translateY(10px);
+      }
+    }
+  }
+
+  &-nav {
+    width: 0%;
+    // width: calc(100% - 51px);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    justify-content: space-evenly;
+    background-color: $primary;
+    overflow: hidden;
+    li {
+      display: flex;
+      align-items: center;
+      a {
+        font-size: 0;
+        color: $secondary;
+        i {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}
+
+.banner {
+  font-family: "Exo 2", sans-serif;
+
+  .bg {
+    display: none;
+  }
+
+  .text {
+    width: 90%;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    h1 {
+      font-size: 48px;
+      color: $secondary;
+    }
+
+    p {
+      font-size: 28px;
+      text-align: justify;
+      Strong {
+        color: $highlight;
+      }
+    }
+  }
+
+  .links {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+
+    a {
+      padding: 1em 2em;
+      border-radius: 0.5em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 18px;
+      &:nth-child(1) {
+        background-color: $highlight;
+        border: 2px solid $highlight;
+        color: $primary;
+        &:hover {
+          background-color: $background;
+          border: 2px solid $primary;
+          color: $primary;
+        }
+      }
+      &:nth-child(2) {
+        background-color: $background;
+        border: 2px solid $primary;
+        color: $primary;
+        &:hover {
+          background-color: $highlight;
+          border: 2px solid $highlight;
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+// =====================
+//     Mixins Area
+// =====================
+main{
+  @include laptop(){
+    margin-top: 0;
+  }
+}
+
+.navbar{
+  @include laptop(){
+
+    .toggle{
+      display: none;
+    }
+
+    &-nav{
+      width: 100%;
+      li{
+        a{
+          font-size: 24px;
+          text-transform: uppercase;
+          text-decoration: none;
+          padding: 12px;
+          i{
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.banner {
+  
+  @include tablet() {
+    h1 {
+      font-size: 64px;
+    }
+    p {
+      font-size: 36px;
+    }
+    lottie-player {
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    .links {
+      a {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @include laptop() {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "text image";
+
+    .bg {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      z-index: -1;
+      background-color: $secondary;
+      clip-path: polygon(60% 0, 100% 0%, 100% 100%, 40% 100%);
+    }
+
+    .text {
+      grid-area: text;
+      align-self: center;
+      transform: translateY(-25%);
+      h1 {
+        font-size: 72px;
+      }
+    }
+
+    lottie-player {
+      width: 600px;
+      height: 600px;
+      grid-area: image;
+      align-self: center;
+    }
+
+    .links {
+      grid-area: text;
+      margin-top: 10em;
+      align-self: center;
+      transform: translateY(50%);
+
+      a{
+        font-size: 18px;
+      }
+    }
+  }
+
+
+}
+

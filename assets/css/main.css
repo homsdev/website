@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;900&display=swap");
+body {
+  background-color: #f7fefcff;
+}
+
+main {
+  margin-top: 48px;
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navbar .toggle {
+  width: 48px;
+  height: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #3b60e4;
+  border-radius: 0.5em;
+  cursor: pointer;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+
+.navbar .toggle .bar {
+  position: relative;
+  width: 95%;
+  height: 5px;
+  background-color: #080708;
+  border-radius: 3px;
+}
+
+.navbar .toggle .bar::before, .navbar .toggle .bar::after {
+  content: "";
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  background-color: inherit;
+  border-radius: 3px;
+}
+
+.navbar .toggle .bar::before {
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+}
+
+.navbar .toggle .bar::after {
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+
+.navbar-nav {
+  width: 0%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background-color: #080708;
+  overflow: hidden;
+}
+
+.navbar-nav li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar-nav li a {
+  font-size: 0;
+  color: #3b60e4;
+}
+
+.navbar-nav li a i {
+  font-size: 28px;
+}
+
+.banner {
+  font-family: "Exo 2", sans-serif;
+}
+
+.banner .bg {
+  display: none;
+}
+
+.banner .text {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.banner .text h1 {
+  font-size: 48px;
+  color: #3b60e4;
+}
+
+.banner .text p {
+  font-size: 28px;
+  text-align: justify;
+}
+
+.banner .text p Strong {
+  color: #7765e3;
+}
+
+.banner .links {
+  width: 90%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.banner .links a {
+  padding: 1em 2em;
+  border-radius: 0.5em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.banner .links a:nth-child(1) {
+  background-color: #7765e3;
+  border: 2px solid #7765e3;
+  color: #080708;
+}
+
+.banner .links a:nth-child(1):hover {
+  background-color: #f7fefcff;
+  border: 2px solid #080708;
+  color: #080708;
+}
+
+.banner .links a:nth-child(2) {
+  background-color: #f7fefcff;
+  border: 2px solid #080708;
+  color: #080708;
+}
+
+.banner .links a:nth-child(2):hover {
+  background-color: #7765e3;
+  border: 2px solid #7765e3;
+  color: #080708;
+}
+
+@media only screen and (min-width: 1200px) {
+  main {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .navbar .toggle {
+    display: none;
+  }
+  .navbar-nav {
+    width: 100%;
+  }
+  .navbar-nav li a {
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px;
+  }
+  .navbar-nav li a i {
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .banner h1 {
+    font-size: 64px;
+  }
+  .banner p {
+    font-size: 36px;
+  }
+  .banner lottie-player {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  .banner .links a {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .banner {
+    width: 100%;
+    height: 100vh;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "text image";
+  }
+  .banner .bg {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    background-color: #3b60e4;
+    -webkit-clip-path: polygon(60% 0, 100% 0%, 100% 100%, 40% 100%);
+            clip-path: polygon(60% 0, 100% 0%, 100% 100%, 40% 100%);
+  }
+  .banner .text {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: text;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -webkit-transform: translateY(-25%);
+            transform: translateY(-25%);
+  }
+  .banner .text h1 {
+    font-size: 72px;
+  }
+  .banner lottie-player {
+    width: 600px;
+    height: 600px;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: image;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .banner .links {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: text;
+    margin-top: 10em;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+  .banner .links a {
+    font-size: 18px;
+  }
+}
+/*# sourceMappingURL=main.css.map */
