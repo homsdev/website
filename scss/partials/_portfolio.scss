@@ -1,0 +1,129 @@
+body {
+  background-color: $secondary;
+}
+.grid-cards {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 20px;
+  grid-gap: 40px;
+}
+
+.card {
+  background-color: lighten($color: $primary, $amount: 10%);
+  border-radius: 20px;
+  transition: all 1s ease-in-out;
+
+  .container-img {
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+
+    &::after {
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 20px 20px 0 0;
+      opacity: 0.7;
+      // background-image: linear-gradient(135deg, #2bdce3, #42ffdb);
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 20px 20px 0 0;
+    }
+  }
+
+  .details {
+    padding: 20px 10px;
+
+    h3 {
+      color: $secondary;
+      font-weight: 600;
+      font-size: 18px;
+      margin: 10px 0 15px 0;
+    }
+
+    p {
+      color: $background;
+      font-size: 15px;
+      line-height: 30px;
+      font-weight: 400;
+      text-align: justify;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: $secondary;
+      li {
+        color: $highlight;
+        transform: translateX(15px);
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background-color: $highlight;
+          transform: translateX(-120%) translateY(-50%);
+        }
+      }
+    }
+
+    a {
+      position: relative;
+      width: 30%;
+      display: block;
+      margin: 1em auto;
+      padding: 1em 2em;
+      border-radius: 1em;
+      background-color: $highlight;
+      text-align: center;
+      text-decoration: none;
+      color: $primary;
+      z-index: 500;
+      filter: url("#goo");
+      &::before,
+      &::after {
+        width: 4.4em;
+        height: 2.95em;
+        position: absolute;
+        content: "";
+        display: inline-block;
+        background: $highlight;
+        border-radius: 50%;
+        transition: transform 1s ease;
+        transform: scale(0);
+        z-index: -1;
+      }
+
+      &::before {
+        top: -25%;
+        left: 20%;
+      }
+
+      &::after {
+        bottom: -25%;
+        right: 20%;
+      }
+
+      &:hover {
+        &::before,
+        &::after {
+          transform: none;
+        }
+      }
+    }
+  }
+
+  // &:hover {
+  //   box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  //   transform: scale(1.05);
+  // }
+}

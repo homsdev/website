@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;900&display=swap");
 body {
   background-color: #f7fefcff;
+  font-family: "Exo 2", sans-serif;
 }
 
 main {
@@ -21,6 +22,7 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  z-index: 1000;
 }
 
 .navbar .toggle {
@@ -102,10 +104,6 @@ main {
   font-size: 28px;
 }
 
-.banner {
-  font-family: "Exo 2", sans-serif;
-}
-
 .banner .bg {
   display: none;
 }
@@ -117,8 +115,34 @@ main {
 }
 
 .banner .text h1 {
+  position: relative;
   font-size: 48px;
-  color: #3b60e4;
+  color: #f7fefcff;
+}
+
+.banner .text h1::before {
+  position: absolute;
+  content: "";
+  width: 225px;
+  height: 100%;
+  background-color: #3b60e4;
+  border-radius: 0.5em;
+  z-index: -1;
+  -webkit-transform: translateX(-5%);
+          transform: translateX(-5%);
+}
+
+.banner .text h1::after {
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-color: #3b60e4;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(45deg) translateX(-20px);
+          transform: rotate(45deg) translateX(-20px);
+  z-index: -1;
 }
 
 .banner .text p {
@@ -180,11 +204,58 @@ main {
 }
 
 @media only screen and (min-width: 1200px) {
+  .navbar {
+    width: 100px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f7fefcff;
+    border-radius: 50% 0% 0% 350%;
+    -webkit-perspective: 800;
+            perspective: 800;
+    -webkit-transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+    transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+    z-index: 1000;
+  }
   .navbar .toggle {
-    display: none;
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+  .navbar .toggle .bar {
+    width: 35px;
+    background-color: #3b60e4;
+    -webkit-transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+    transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+  }
+  .navbar .toggle .bar::before {
+    width: 42px;
+  }
+  .navbar .toggle .bar::after {
+    width: 30px;
   }
   .navbar-nav {
+    opacity: 0;
     width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    background-color: transparent;
+    -webkit-transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+    transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+  }
+  .navbar-nav li {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-transform: translateY(35px);
+            transform: translateY(35px);
+    -webkit-transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+    transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
   }
   .navbar-nav li a {
     font-size: 24px;
@@ -247,6 +318,15 @@ main {
   .banner .text h1 {
     font-size: 72px;
   }
+  .banner .text h1::before {
+    width: 350px;
+  }
+  .banner .text h1::after {
+    width: 40px;
+    height: 40px;
+    -webkit-transform: rotate(45deg) translateX(-30px);
+            transform: rotate(45deg) translateX(-30px);
+  }
   .banner lottie-player {
     width: 600px;
     height: 600px;
@@ -271,5 +351,155 @@ main {
   .banner .links a {
     font-size: 18px;
   }
+}
+
+@media only screen and (min-width: 1200px) {
+  .active {
+    width: 300px;
+    border-radius: 1% 0 0 1%;
+  }
+  .active .navbar-nav {
+    opacity: 1;
+  }
+  .active .navbar-nav li {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+body {
+  background-color: #3b60e4;
+}
+
+.grid-cards {
+  width: 90%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 20px;
+  grid-gap: 40px;
+}
+
+.card {
+  background-color: #231f23;
+  border-radius: 20px;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.card .container-img {
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+}
+
+.card .container-img::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px 20px 0 0;
+  opacity: 0.7;
+}
+
+.card .container-img img {
+  width: 100%;
+  display: block;
+  border-radius: 20px 20px 0 0;
+}
+
+.card .details {
+  padding: 20px 10px;
+}
+
+.card .details h3 {
+  color: #3b60e4;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 10px 0 15px 0;
+}
+
+.card .details p {
+  color: #f7fefcff;
+  font-size: 15px;
+  line-height: 30px;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.card .details ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #3b60e4;
+}
+
+.card .details ul li {
+  color: #7765e3;
+  -webkit-transform: translateX(15px);
+          transform: translateX(15px);
+}
+
+.card .details ul li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #7765e3;
+  -webkit-transform: translateX(-120%) translateY(-50%);
+          transform: translateX(-120%) translateY(-50%);
+}
+
+.card .details a {
+  position: relative;
+  width: 30%;
+  display: block;
+  margin: 1em auto;
+  padding: 1em 2em;
+  border-radius: 1em;
+  background-color: #7765e3;
+  text-align: center;
+  text-decoration: none;
+  color: #080708;
+  z-index: 500;
+  -webkit-filter: url("#goo");
+          filter: url("#goo");
+}
+
+.card .details a::before, .card .details a::after {
+  width: 4.4em;
+  height: 2.95em;
+  position: absolute;
+  content: "";
+  display: inline-block;
+  background: #7765e3;
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  z-index: -1;
+}
+
+.card .details a::before {
+  top: -25%;
+  left: 20%;
+}
+
+.card .details a::after {
+  bottom: -25%;
+  right: 20%;
+}
+
+.card .details a:hover::before, .card .details a:hover::after {
+  -webkit-transform: none;
+          transform: none;
 }
 /*# sourceMappingURL=main.css.map */

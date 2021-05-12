@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="toggle">
+          <div class="bar"></div>
+        </div>
+        <ul class="navbar-nav">
+          <li>
+            <a href="/"><i class="fas fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="/portfolio"><i class="fas fa-briefcase"></i>Portfolio</a>
+          </li>
+          <li>
+            <a href=""><i class="fas fa-tools"></i>Skills</a>
+          </li>
+          <li>
+            <a href=""><i class="fas fa-comment-dots"></i>Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="grid-cards">
+        <div class="card">
+          <div class="container-img">
+            <img src="/assets/img/chiho-1.jpg" alt="" />
+          </div>
+          <div class="details">
+            <h3>ChiHo CRM</h3>
+            <p>
+              ChiHo CRM is a Web application developed by students from
+              Instituto Politecnico Nacional. ChiHo's goal is to provide a free
+              online medium for Mexican MSMEs that want to improve relationships
+              with their clients.
+            </p>
+
+            <ul>
+              Technologies:
+              <li>NodeJS</li>
+              <li>MySQL</li>
+              <li>HTML, CSS & JS</li>
+            </ul>
+
+            <a href="https://testcrmproject.herokuapp.com/">Visit Now</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container-img">
+            <img src="/assets/img/sprinkled-min.png" alt="" />
+          </div>
+          <div class="details">
+            <h3>Sprinkled eStore</h3>
+            <p>
+              Sprinkled e-commerce web app developed by myself using the MVC
+              design pattern and Spring JAVA framework.
+            </p>
+
+            <ul>
+              Technologies:
+              <li>JAVA</li>
+              <li>Spring</li>
+              <li>Maven</li>
+              <li>HsqlDB</li>
+              <li>HTML, CSS & JS</li>
+            </ul>
+
+            <a href="https://spring-demomvc.herokuapp.com">Visit Now</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container-img">
+            <img src="/assets/img/parallax-min.png" alt="" />
+          </div>
+          <div class="details">
+            <h3>Nature Parallax</h3>
+            <p>
+              Sprinkled is an online store developed by me, using Spring MVC
+              JAVA framework. It provides an online enviroment
+            </p>
+
+            <ul>
+              Technologies:
+              <li>HTML</li>
+              <li>SCSS</li>
+              <li>JS</li>
+            </ul>
+
+            <a href="https://spring-demomvc.herokuapp.com">Visit Now</a>
+          </div>
+        </div>
+      </div>
+
+      <svg
+        style="visibility: hidden; position: absolute"
+        width="0"
+        height="0"
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+      >
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+              result="goo"
+            />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+    </main>
+    <script src="/assets/js/app.js"></script>
+  </body>
+</html>

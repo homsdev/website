@@ -20,6 +20,7 @@ $highlight: #7765e3;
 
 body {
   background-color: $background;
+  font-family: "Exo 2", sans-serif;
 }
 
 main {
@@ -33,6 +34,7 @@ main {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  z-index: 1000;
   .toggle {
     width: 48px;
     height: 48px;
@@ -98,8 +100,6 @@ main {
 }
 
 .banner {
-  font-family: "Exo 2", sans-serif;
-
   .bg {
     display: none;
   }
@@ -111,8 +111,33 @@ main {
       right: auto;
     }
     h1 {
+      position: relative;
       font-size: 48px;
-      color: $secondary;
+      color: $background;
+
+      //Dialog
+      &::before {
+        position: absolute;
+        content: "";
+        width: 225px;
+        height: 100%;
+        background-color: $secondary;
+        border-radius: 0.5em;
+        z-index: -1;
+        transform: translateX(-5%);
+      }
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 30px;
+        background-color: $secondary;
+        bottom: 0;
+        left: 0;
+        transform: rotate(45deg) translateX(-20px);
+        z-index: -1;
+      }
     }
 
     p {
@@ -163,28 +188,63 @@ main {
 // =====================
 //     Mixins Area
 // =====================
-main{
-  @include laptop(){
+main {
+  @include laptop() {
     margin-top: 0;
   }
 }
 
-.navbar{
-  @include laptop(){
+.navbar {
+  @include laptop() {
+    width: 100px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: $background;
+    border-radius: 50% 0% 0% 350%;
+    perspective: 800;
+    transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+    z-index: 1000;
+    .toggle {
+      width: 48px;
+      height: 48px;
+      background-color: transparent;
+      margin: {
+        top: 10px;
+        right: 20px;
+      }
+      .bar {
+        width: 35px;
+        background-color: $secondary;
+        transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+        &::before {
+          width: 42px;
+        }
 
-    .toggle{
-      display: none;
+        &::after {
+          width: 30px;
+        }
+      }
     }
 
-    &-nav{
+    &-nav {
+      opacity: 0;
       width: 100%;
-      li{
-        a{
+      flex-direction: column;
+      background-color: transparent;
+      transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+      li {
+        justify-content: flex-end;
+        transform: translateY(35px);
+        transition: all 800ms cubic-bezier(0.9, 0, 0.33, 1);
+
+        a {
           font-size: 24px;
           text-transform: uppercase;
           text-decoration: none;
           padding: 12px;
-          i{
+          i {
             margin-right: 5px;
           }
         }
@@ -194,7 +254,6 @@ main{
 }
 
 .banner {
-  
   @include tablet() {
     h1 {
       font-size: 64px;
@@ -238,6 +297,17 @@ main{
       transform: translateY(-25%);
       h1 {
         font-size: 72px;
+        &::before {
+          width: 350px;
+        }
+
+        &::after {
+          width: 40px;
+          height: 40px;
+          // background-color: red;
+          // z-index: 0;
+          transform: rotate(45deg) translateX(-30px);
+        }
       }
     }
 
@@ -254,12 +324,25 @@ main{
       align-self: center;
       transform: translateY(50%);
 
-      a{
+      a {
         font-size: 18px;
       }
     }
   }
-
-
 }
 
+.active {
+  @include laptop() {
+    width: 300px;
+    border-radius: 1% 0 0 1%;
+
+    .navbar-nav {
+      opacity: 1;
+      li {
+        transform: translateY(0px);
+      }
+    }
+  }
+}
+
+@import "partials/portfolio";
