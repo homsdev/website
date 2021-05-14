@@ -48,12 +48,14 @@ main {
       top: 3px;
       right: 3px;
     }
+
     .bar {
       position: relative;
       width: 95%;
       height: 5px;
       background-color: $primary;
       border-radius: 3px;
+      transition: all 500ms ease;
 
       &::before,
       &::after {
@@ -77,14 +79,15 @@ main {
 
   &-nav {
     width: 0%;
-    // width: calc(100% - 51px);
     list-style: none;
     padding: 0;
     margin: 0;
     display: inline-flex;
     justify-content: space-evenly;
-    background-color: $primary;
+    background-color: lighten($color: $primary, $amount: 10%);
     overflow: hidden;
+    transition: all 500ms ease-in-out;
+    border-radius: 5px;
     li {
       display: flex;
       align-items: center;
@@ -94,6 +97,27 @@ main {
         i {
           font-size: 28px;
         }
+      }
+    }
+  }
+}
+
+.active {
+  .navbar-nav {
+    width: calc(100% - 51px);
+  }
+
+  .toggle {
+    .bar {
+      transform: rotate(360deg);
+      background-color: transparent;
+      &::before {
+        background-color: $primary;
+        transform: rotate(-45deg);
+      }
+      &::after {
+        background-color: $primary;
+        transform: rotate(45deg);
       }
     }
   }
@@ -186,9 +210,23 @@ main {
 }
 
 // =====================
-//     Mixins Area
+//  Media Queries Area
 // =====================
+
+body {
+  @include tablet() {
+    background-color: $secondary;
+  }
+
+  @include laptop() {
+    background-color: $background;
+  }
+}
+
 main {
+  @include tablet() {
+    margin-top: 51px;
+  }
   @include laptop() {
     margin-top: 0;
   }
@@ -255,6 +293,20 @@ main {
 
 .banner {
   @include tablet() {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    .bg {
+      display: block;
+      position: absolute;
+      top: 51px;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(100% 0, 100% 74%, 65% 100%, 0 100%, 0 0);
+      background-color: $background;
+      z-index: -1;
+    }
+
     h1 {
       font-size: 64px;
     }
@@ -282,10 +334,11 @@ main {
     grid-template-areas: "text image";
 
     .bg {
-      display: block;
       width: 100%;
       height: 100vh;
+      display: block;
       position: absolute;
+      top: 0;
       z-index: -1;
       background-color: $secondary;
       clip-path: polygon(60% 0, 100% 0%, 100% 100%, 40% 100%);
@@ -340,6 +393,18 @@ main {
       opacity: 1;
       li {
         transform: translateY(0px);
+      }
+    }
+
+    .toggle {
+      .bar {
+        background-color: transparent;
+        transition: all 500ms ease;
+        &::before,
+        &::after {
+          width: 100%;
+          background-color: $secondary;
+        }
       }
     }
   }
