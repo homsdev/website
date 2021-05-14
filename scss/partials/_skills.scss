@@ -1,0 +1,108 @@
+.skills {
+  width: 90%;
+  margin: 48px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.skill-card {
+  width: 95%;
+  border-radius: 10px;
+  transition: 2s;
+  transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  background-color: $background;
+  display: flex;
+
+  .logo {
+    position: relative;
+    width: 20%;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 48px;
+      transform: translateY(-50%) translateX(-50%);
+    }
+  }
+
+  .info {
+    align-self: flex-start;
+    width: 80%;
+    h5 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-right: 10px;
+      position: relative;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 12px;
+        border-radius: 8px;
+        transform: translateY(150%);
+      }
+
+      &::after {
+        width: calc(1% * var(--p));
+        background: linear-gradient(
+          90deg,
+          rgba(52, 106, 201, 1) 0%,
+          rgba(43, 188, 137, 1) 100%
+        );
+      }
+
+      span {
+        font-size: 12px;
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+.skills {
+  width: 90%;
+  height: 100vh;
+  align-items: center;
+  margin-top: 0;
+  @include laptop() {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.skill-card {
+  @include laptop() {
+    height: 100px;
+    transition: 1.5s;
+    transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .logo {
+      img {
+        width: 64px;
+      }
+    }
+
+    .info {
+      h5 {
+        font-size: 24px;
+
+        &::after,
+        &::before {
+          height: 15px;
+        }
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

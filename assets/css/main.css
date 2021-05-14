@@ -502,4 +502,121 @@ body {
   -webkit-transform: none;
           transform: none;
 }
+
+.skills {
+  width: 90%;
+  margin: 48px auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.skill-card {
+  width: 95%;
+  border-radius: 10px;
+  -webkit-transition: 2s;
+  transition: 2s;
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+          transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  background-color: #f7fefcff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.skill-card .logo {
+  position: relative;
+  width: 20%;
+}
+
+.skill-card .logo img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+}
+
+.skill-card .info {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  width: 80%;
+}
+
+.skill-card .info h5 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 10px;
+  position: relative;
+}
+
+.skill-card .info h5::before, .skill-card .info h5::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  border-radius: 8px;
+  -webkit-transform: translateY(150%);
+          transform: translateY(150%);
+}
+
+.skill-card .info h5::after {
+  width: calc(1% * var(--p));
+  background: -webkit-gradient(linear, left top, right top, from(#346ac9), to(#2bbc89));
+  background: linear-gradient(90deg, #346ac9 0%, #2bbc89 100%);
+}
+
+.skill-card .info h5 span {
+  font-size: 12px;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.skills {
+  width: 90%;
+  height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0;
+}
+
+@media only screen and (min-width: 1200px) {
+  .skills {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .skill-card {
+    height: 100px;
+    -webkit-transition: 1.5s;
+    transition: 1.5s;
+    -webkit-transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+  .skill-card:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  .skill-card .logo img {
+    width: 64px;
+  }
+  .skill-card .info h5 {
+    font-size: 24px;
+  }
+  .skill-card .info h5::after, .skill-card .info h5::before {
+    height: 15px;
+  }
+  .skill-card .info h5 span {
+    font-size: 16px;
+  }
+}
 /*# sourceMappingURL=main.css.map */
